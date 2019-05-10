@@ -40,3 +40,60 @@ int askUser()
 	s = getchar();
 	return s;
 }
+//Question #3: updated on 05.09.2019
+#include<string>
+#include<iostream>
+
+using namespace std;
+
+class A
+{
+	int size;
+	float* p;
+public:
+	A(int s)
+	{
+		size = s;
+		p = new float[s];
+	}
+	~A()
+	{
+		delete p;
+	}
+	void locateValue_At(int loc, int value)
+	{
+		if (loc < size && loc>0)
+			*(p + loc) = value;
+		else
+			cout << "input boundary is out of range " << endl;
+	}
+
+	float getValue_At(int location) const
+	{
+		float *l = (p + (location * sizeof(float)));
+		return *l;
+	}
+
+	float Max()
+	{
+		float max = p[0];
+		for (int a = 0; a < size; a++)
+		{
+			if (p[a] > max)
+				max = p[a];
+		}
+		return max;
+	}
+
+	float Min()
+	{
+		float min = p[0];
+		for (int a = 0; a < size; a++)
+		{
+			if (p[a] < min)
+				min = p[a];
+		}
+		return min;
+	}
+
+};
